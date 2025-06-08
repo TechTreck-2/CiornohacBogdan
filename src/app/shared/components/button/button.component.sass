@@ -1,0 +1,23 @@
+button
+    cursor: pointer
+    color: var(--text-color)
+    background: var(--border-color)
+    border: none
+    padding: 5px 10px
+    border-radius: 10px
+    transition: background 0.1s ease-in
+    
+    &:hover
+        background: var(--hover-btn)
+                
+    &:active
+        background: var(--active-btn)
+        box-shadow: rgba(225, 228, 232, 0.2) 0 1px inset
+        transition: none 0s 
+
+    &:disabled
+        background: rgba(99, 99, 99, 0.5)
+        cursor: not-allowed
+        box-shadow: none
+        transition: none 0s
+                    

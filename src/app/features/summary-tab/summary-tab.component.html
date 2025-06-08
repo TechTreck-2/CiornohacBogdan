@@ -1,0 +1,39 @@
+@if(showModal){
+<app-modal-summary
+  (close)="closeModal()"
+  [ticketType]="ticketType"
+  (submit)="submitTicket($event)"
+/>
+}
+
+<div class="summary-container">
+  <div>
+    <h2>Vacante si bilete de voie</h2>
+    <p>
+      Cere timp liber, verifica-ti balansul sau creeaza un ticket de permisiune
+    </p>
+    <div class="balance-container">
+      <app-card-timeoff
+        icon="beach_access"
+        title="Zile vacanta"
+        [daysRemained]="daysOffVacantion"
+        (changeType)="setTicketType('Vacanta')"
+      />
+      <app-card-timeoff
+        icon="beenhere"
+        title="Bilete de voie"
+        [daysRemained]="daysOffPermissions"
+        (changeType)="setTicketType('Bilet de voie')"
+      />
+      <app-card-timeoff icon="sick" title="Sick days" [daysRemained]="10" />
+      <app-button name="Deschide ticket" (onClick)="openModal()" />
+    </div>
+  </div>
+  <hr />
+
+  <app-tickets-table
+    [ticketsTableData]="ticketsData"
+    [tableDataHead]="headData"
+    (addDaysOff)="addDaysOff($event)"
+  />
+</div>

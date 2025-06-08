@@ -1,0 +1,55 @@
+@if(showModal){
+<app-modal-time
+  (close)="closeModal()"
+  [data]="selectedRow"
+  (delete)="deleteRow($event)"
+  (save)="saveChanges($event)"
+/>
+}
+
+<div class="time-tabele--container">
+  <table>
+    <thead class="table-header">
+      <tr>
+        <td class="data-tabel-column">
+          Data
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </td>
+        <td>Tip</td>
+        <td>Start</td>
+        <td>Stop</td>
+        <td>Durata</td>
+        <td>Actiune</td>
+      </tr>
+    </thead>
+    <tbody>
+      @for (data of summaryTableData; track $index) {
+      <tr>
+        <td>{{ data.date }}</td>
+        <td class="table-header">{{ data.type }}</td>
+        <td>{{ data.start }}</td>
+        <td>{{ data.stop }}</td>
+        <td>{{ data.duration }}</td>
+        <td><app-button name="Modifica" (onClick)="triggerModal(data)" /></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="sortDate(true)">
+    <mat-icon>trending_up</mat-icon>
+    <span>Crescator</span>
+  </button>
+  <button mat-menu-item (click)="sortDate(false)">
+    <mat-icon>trending_down</mat-icon>
+    <span>Descrescator</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,63 @@
+.time-tabele--container
+    height: 60vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+    table
+        border: 1px solid var(--border-color)
+        width: 80%
+        border-radius: 10px
+        border-collapse: separate
+        border-spacing: 0
+        overflow: hidden
+        color: var(--text-table)
+        
+        .table-header
+            color: var(--text-color)
+
+        thead
+            background: var(--hover-btn)
+            display: table-header-group
+            font-size: 18px
+           
+            
+        tr 
+            display: table
+            width: 100%
+            table-layout: fixed
+            
+
+            td
+                padding: 15px
+
+        tbody
+            display: block
+            max-height: 350px
+            overflow-y: auto
+            width: 100%
+
+            &::-webkit-scrollbar 
+                width: 8px
+
+
+            &::-webkit-scrollbar-track 
+                box-shadow: inset 0 0 5px grey 
+                border-radius: 10px
+ 
+
+            &::-webkit-scrollbar-thumb
+                background: gray
+                border-radius: 10px
+                cursor: pointer
+
+
+
+            td
+                border-top: 1px solid var(--bottom-border)
+                padding: 20px 15px
+
+.data-tabel-column
+    display: flex
+    align-items: center
+    flex-wrap: wrap

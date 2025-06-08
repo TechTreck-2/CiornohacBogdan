@@ -1,0 +1,70 @@
+.backdrop 
+  background-color: rgba(0, 0, 0, 0.9)
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  z-index: 10000
+ 
+
+dialog 
+  width: 90%
+  max-width: 30rem
+  background-color: var(--background-color)
+  color: var(--text-color)
+  border-radius: 6px
+  border: none
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4)
+  overflow: hidden
+  padding: 1rem
+  top: 5rem
+  position: absolute
+  top: 50%
+  left:50%
+  transform: translate(-50%,-50%)
+
+  .modal
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 20px
+    width: 100%
+    .modal-header
+      display: flex
+      flex-wrap: wrap
+      align-items: center
+      justify-content: space-between
+      width: 100%
+      .close-modal
+        cursor: pointer
+        display: flex
+        justify-content: center
+        align-items: center
+    .modal-body
+      display: flex
+      align-items: flex-start
+      flex-direction: column
+      width: 100%
+      gap: 10px
+      .time-input
+        display: flex
+        align-items: center
+        gap: 6px
+      .input-area
+        font-size: 18px
+        display: flex
+        flex-direction: column
+        gap: 5px
+        input
+          padding: 5px
+          border-radius: 5px
+          width: 50px
+          text-align: center
+    .modal-footer
+      display: flex
+      justify-content: flex-end
+      width: 100%
+      gap: 10px
+

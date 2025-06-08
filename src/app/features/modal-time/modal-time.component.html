@@ -1,0 +1,58 @@
+<div class="backdrop" (click)="closeModalOnBackdrop($event)">
+  <dialog open>
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Editare pontaj: {{ data.date }}</h2>
+        <div class="close-modal" (click)="closeModal()">
+          <mat-icon>close</mat-icon>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="input-area">
+          <label for="start"> Intrare:</label>
+          <div class="time-input">
+            <input
+              type="text"
+              name="start"
+              maxlength="2"
+              pattern="[0-2][0-9]"
+              [(ngModel)]="startHour"
+            />:
+            <input
+              type="text"
+              maxlength="2"
+              pattern="[0-5][0-9]"
+              name="start"
+              [(ngModel)]="startMinute"
+            />
+          </div>
+        </div>
+        <div class="input-area">
+          <label for="first">Iesire:</label>
+          <div class="time-input">
+            <input
+              type="text"
+              name="start"
+              maxlength="2"
+              pattern="[0-2][0-9]"
+              [(ngModel)]="endHour"
+            />:
+            <input
+              type="text"
+              maxlength="2"
+              pattern="[0-5][0-9]"
+              name="start"
+              [(ngModel)]="endMinute"
+            />
+          </div>
+        </div>
+        <div class="input-area">Durata: {{ calculateDuration() }}</div>
+      </div>
+      <div class="modal-footer">
+        <app-button name="Anuleaza" (onClick)="closeModal()" />
+        <app-button name="Sterge" (onClick)="deleteRow()" />
+        <app-button name="Salveaza" (onClick)="saveChanges()" />
+      </div>
+    </div>
+  </dialog>
+</div>

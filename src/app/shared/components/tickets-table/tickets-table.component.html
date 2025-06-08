@@ -1,0 +1,63 @@
+<div class="time-tabele--container">
+  <div class="date-filter-container">
+    <label>Data inceput</label>
+    <input type="date" [(ngModel)]="startDate" />
+    <label>Data sfarsit</label>
+    <input type="date" [(ngModel)]="endDate" />
+    <div class="filter-buttons">
+      <app-button name="Filtreaza" (onClick)="filterTickets()" />
+      <app-button name="Reseteaza" (onClick)="resetFilter()" />
+    </div>
+  </div>
+  <table>
+    <thead class="table-header">
+      <tr>
+        @for (dataHead of tableDataHead; track $index) {
+        <td>
+          {{ dataHead }}
+          @if (dataHead === 'Start' || dataHead === 'End' || dataHead ===
+          'Durata') {
+          <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            [attr.data-sort-type]="dataHead"
+            #menuTrigger="matMenuTrigger"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="sortDate(true, dataHead)">
+              <mat-icon>trending_up</mat-icon>
+              <span>Crescator</span>
+            </button>
+            <button mat-menu-item (click)="sortDate(false, dataHead)">
+              <mat-icon>trending_down</mat-icon>
+              <span>Descrescator</span>
+            </button>
+          </mat-menu>
+          }
+        </td>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (data of ticketsTableData; track $index) {
+      <tr>
+        <td>{{ data.type }}</td>
+        <td class="table-header">{{ data.status }}</td>
+        <td>{{ data.start }}</td>
+        <td>{{ data.end }}</td>
+        <td>{{ data.duration }}</td>
+        <td>
+          <app-button
+            name="Anulare"
+            [disabled]="data.status !== 'In asteptare'"
+            (onClick)="deteleteTicket(data)"
+          />
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

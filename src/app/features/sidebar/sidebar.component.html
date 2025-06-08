@@ -1,0 +1,16 @@
+<div class="sidebar">
+  <app-sidebar-button
+    name="Pontare"
+    type="pontare"
+    [active]="activTab === 'pontare'"
+    (select)="onSelectBtn($event)"
+    icon="schedule"
+  />
+  <app-sidebar-button
+    name="Sumar"
+    type="sumar"
+    [active]="activTab === 'sumar'"
+    (select)="onSelectBtn($event)"
+    icon="list"
+  />
+</div>

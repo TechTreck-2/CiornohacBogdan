@@ -1,0 +1,24 @@
+<div class="clock-container">
+  <mat-icon class="clock">hourglass_empty</mat-icon>
+  <div class="time-container">
+    <div class="countdown">
+      <table>
+        <tbody>
+          <tr>
+            <td>Timp lucrat:</td>
+            <td>{{ timeSpent$ | async }}</td>
+          </tr>
+          <tr>
+            <td>Prima intrare:</td>
+            <td>{{ startTime$ | async }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="btn-container">
+      <app-button name="Start" (onClick)="onStartTimer()" />
+      <app-button name="Stop" (onClick)="onStopTimer()" />
+      <app-button name="Reset" (onClick)="onResetTimer()" />
+    </div>
+  </div>
+</div>
