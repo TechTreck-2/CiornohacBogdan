@@ -81,74 +81,76 @@ export const summaryData: rowDatasummary[] = [
   },
 ];
 
+/*
+  
 export const vacationTickets: ticketsType[] = [
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2025-03-02',
-    end: '2025-03-12',
+    finish: '2025-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2025-03-02', '2025-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2024-09-21',
-    end: '2024-10-03',
+    finish: '2024-10-03',
     status: 'In asteptare',
     duration: getDaysBetween('2024-09-21', '2024-10-03'),
   },
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Vacanta',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
@@ -158,29 +160,31 @@ export const permissionsTickets: ticketsType[] = [
   {
     type: 'Bilet de voie',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
   {
     type: 'Bilet de voie',
     start: '2025-03-02',
-    end: '2025-03-12',
+    finish: '2025-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2025-03-02', '2025-03-12'),
   },
   {
     type: 'Bilet de voie',
     start: '2024-09-21',
-    end: '2024-10-03',
+    finish: '2024-10-03',
     status: 'In asteptare',
     duration: getDaysBetween('2024-09-21', '2024-10-03'),
   },
   {
     type: 'Bilet de voie',
     start: '2024-03-02',
-    end: '2024-03-12',
+    finish: '2024-03-12',
     status: 'Aprobat',
     duration: getDaysBetween('2024-03-02', '2024-03-12'),
   },
 ];
+
+*/

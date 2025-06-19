@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { TicketsService } from '../../../core/services/tickets.service';
 
 @Component({
   selector: 'app-tickets-table',
@@ -15,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
+    CommonModule,
   ],
   templateUrl: './tickets-table.component.html',
   styleUrl: './tickets-table.component.sass',
@@ -23,6 +26,8 @@ export class TicketsTableComponent {
   @Input({ required: true }) tableDataHead!: string[];
   @Input({ required: true }) ticketsTableData!: ticketsType[];
   @Output() addDaysOff = new EventEmitter<number>();
+
+  constructor(private ticketsService: TicketsService) {}
 
   startDate = '';
   endDate = '';
@@ -35,8 +40,20 @@ export class TicketsTableComponent {
 
   deteleteTicket(ticket: ticketsType) {
     this.addDaysOff.emit(ticket.duration);
-    this.ticketsTableData = this.ticketsTableData.filter((t) => t !== ticket);
-    this.backupTickets = [...this.ticketsTableData];
+    if (ticket.id !== undefined) {
+      this.ticketsService.deleteTicketsData(ticket.id).subscribe({
+        next: (response) => {
+          console.log('Ticket deleted successfully:', response);
+        },
+        error: (error) => {
+          console.error('Error deleting ticket:', error);
+        },
+      });
+      this.ticketsTableData = this.ticketsTableData.filter((t) => t !== ticket);
+      this.backupTickets = [...this.ticketsTableData];
+    } else {
+      console.error('Cannot delete ticket: ticket.id is undefined');
+    }
   }
 
   filterTickets() {
@@ -77,8 +94,8 @@ export class TicketsTableComponent {
   private sortByEndDate(isAscending: boolean) {
     this.ticketsTableData.sort((a, b) => {
       return isAscending
-        ? a.end.localeCompare(b.end)
-        : b.end.localeCompare(a.end);
+        ? a.finish.localeCompare(b.finish)
+        : b.finish.localeCompare(a.finish);
     });
   }
   private sortByDuration(isAscending: boolean) {

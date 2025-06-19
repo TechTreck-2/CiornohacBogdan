@@ -82,7 +82,7 @@ export class ModalSummaryComponent {
         type: this.ticketType,
         status: 'In asteptare',
         start: start.toISOString().split('T')[0],
-        end: end.toISOString().split('T')[0],
+        finish: end.toISOString().split('T')[0],
         duration: this.daysOff,
       };
       this.submit.emit(ticket);

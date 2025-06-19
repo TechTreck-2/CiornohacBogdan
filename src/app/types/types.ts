@@ -10,6 +10,7 @@ export interface TimeStorage {
 }
 
 export interface rowDatasummary {
+  id?: number;
   date: string;
   type: string;
   start: string;
@@ -18,9 +19,10 @@ export interface rowDatasummary {
 }
 
 export interface ticketsType {
+  id?: number;
   type: 'Vacanta' | 'Bilet de voie';
   start: string;
-  end: string;
+  finish: string;
   status: 'Aprobat' | 'In asteptare' | 'Respins';
   duration: number;
 }

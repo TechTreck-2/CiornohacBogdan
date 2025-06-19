@@ -1,19 +1,14 @@
-import { Component } from '@angular/core';
-import { summaryData } from '../../../assets/dummy-summary';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { TimerService } from '../../core/services/timer.service';
+import { TimeTableService } from '../../core/services/time-table-service.service';
 import { ModalTimeComponent } from '../../features/modal-time/modal-time.component';
-
-interface rowDatasummary {
-  date: string;
-  type: string;
-  start: string;
-  stop: string;
-  duration: string;
-}
+import { rowDatasummary } from '../../types/types';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-time-table',
@@ -24,16 +19,32 @@ interface rowDatasummary {
     MatIconModule,
     ButtonComponent,
     ModalTimeComponent,
+    HttpClientModule,
+    CommonModule,
   ],
   templateUrl: './time-table.component.html',
   styleUrl: './time-table.component.sass',
 })
-export class TimeTableComponent {
-  summaryTableData = summaryData;
+export class TimeTableComponent implements OnInit {
+  summaryTableData: rowDatasummary[] = [];
   showModal = false;
   selectedRow: any = null;
-  constructor(private timerService: TimerService) {
+  constructor(
+    private timerService: TimerService,
+    private timeTableService: TimeTableService
+  ) {
     this.timerService.init();
+    this.timeTableService
+      .getTimeTableData()
+      .subscribe((data: rowDatasummary[]) => {
+        this.summaryTableData = data;
+      });
+
+    this.summaryTableData = this.summaryTableData.map((row) => ({
+      ...row,
+      date: row.date.split('T')[0],
+    }));
+    console.log(this.summaryTableData);
   }
 
   ngOnInit() {
@@ -41,7 +52,12 @@ export class TimeTableComponent {
       if (value) {
         this.timerService.dataDay$.subscribe((data) => {
           if (data.date && data.start && data.stop && data.duration) {
-            this.summaryTableData.push(data);
+            this.timeTableService.addTimeTableData(data).subscribe({
+              next: (response) => {
+                this.summaryTableData.push(data);
+                console.log('Data saved successfully:', response);
+              },
+            });
           }
         });
       }
@@ -57,7 +73,9 @@ export class TimeTableComponent {
   }
 
   triggerModal(rowData: any) {
-    this.selectedRow = rowData;
+    this.selectedRow = this.summaryTableData.find(
+      (row) => row.id === rowData.id
+    );
     this.showModal = true;
   }
 

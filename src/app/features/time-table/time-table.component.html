@@ -1,14 +1,17 @@
-@if(showModal){
 <app-modal-time
   (close)="closeModal()"
   [data]="selectedRow"
   (delete)="deleteRow($event)"
   (save)="saveChanges($event)"
+  *ngIf="showModal"
 />
-}
 
 <div class="time-tabele--container">
-  <table>
+  <div class="no-data" *ngIf="summaryTableData.length === 0">
+    <p>Nu exista date</p>
+  </div>
+
+  <table *ngIf="summaryTableData.length !== 0">
     <thead class="table-header">
       <tr>
         <td class="data-tabel-column">

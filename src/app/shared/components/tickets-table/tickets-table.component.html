@@ -9,7 +9,10 @@
       <app-button name="Reseteaza" (onClick)="resetFilter()" />
     </div>
   </div>
-  <table>
+  <div class="no-data" *ngIf="ticketsTableData.length === 0">
+    <p>Nu exista date</p>
+  </div>
+  <table *ngIf="ticketsTableData.length !== 0">
     <thead class="table-header">
       <tr>
         @for (dataHead of tableDataHead; track $index) {
@@ -47,7 +50,7 @@
         <td>{{ data.type }}</td>
         <td class="table-header">{{ data.status }}</td>
         <td>{{ data.start }}</td>
-        <td>{{ data.end }}</td>
+        <td>{{ data.finish }}</td>
         <td>{{ data.duration }}</td>
         <td>
           <app-button
