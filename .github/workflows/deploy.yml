@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Build the project
-        run: npm run build -- --configure production
+        run: npm run build -- --configuration production
 
       - name: Deploy to GitHub
         uses: JamesIves/github-pages-deploy-action@v4
