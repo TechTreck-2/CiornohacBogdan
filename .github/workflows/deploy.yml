@@ -29,4 +29,4 @@ jobs:
           branch: gh-pages
           folder: dist/techtreck-learning
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PATH }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
